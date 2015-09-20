@@ -1,0 +1,44 @@
+#
+# Dragonfly configuration file.
+#
+
+# 
+# Lines beginning with '#' are comments.
+# Others are:
+# "variable_1:value_1,"
+# "variable_2:value_2,"
+# Note - make sure line ends with comma (,)
+# ...
+
+# Window dimensions in pixels.
+window_horizontal_pixels:1024,
+window_vertical_pixels:768,
+
+# Window dimensions in characters.
+window_horizontal_chars:80,
+window_vertical_chars:24,
+
+# Window background color. 
+# (Choices: black, red, green, yellow, blue, magenta, cyan, white).
+window_background_color:black,
+
+# Target time for 1 game loop (in milliseconds).
+frame_time:33,
+
+# Window style - "default" or "fullscreen".
+window_style:default,
+
+# Window title.
+window_title:Dragonfly,
+
+# Option to show mouse cursor.
+show_mouse:false,
+
+# Option to run in headless mode (no graphics window or input).
+headless:false,
+
+# Font file for all ASCII fonts.
+font_file:df-font.ttf,
+
+# Random seed (0 means use current time).
+random_seed:0,
