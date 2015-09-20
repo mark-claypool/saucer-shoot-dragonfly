@@ -6,6 +6,7 @@
 #include "EventMouse.h"
 #include "EventStep.h"
 #include "EventView.h"
+#include "GameManager.h"
 #include "LogManager.h"
 #include "ResourceManager.h"
 #include "WorldManager.h"
@@ -36,7 +37,7 @@ Hero::Hero() {
     setTransparency();	   // Transparent sprite.
   }
 
-  // Player controls hero, so register with keyboard and mouse.
+  // Player controls hero, so register for input events.
   registerInterest(df::KEYBOARD_EVENT);
   registerInterest(df::MOUSE_EVENT);
 
@@ -62,12 +63,12 @@ Hero::Hero() {
   fire_countdown = fire_slowdown;
   nuke_count = 1;
 }
-
+  
 Hero::~Hero() {
 
   // Create GameOver object.
   GameOver *p_go = new GameOver;
- 
+  
   // Make big explosion.
   for (int i=-8; i<=8; i+=5) {
     for (int j=-5; j<=5; j+=3) {
@@ -78,11 +79,11 @@ Hero::~Hero() {
       p_explosion -> setPosition(temp_pos);
     }
   }
-
+ 
   // Mark Reticle for deletion.
   df::WorldManager::getInstance().markForDelete(p_reticle);
 }
-
+ 
 // Handle event.
 // Return 0 if ignored, else 1.
 int Hero::eventHandler(const df::Event *p_e) {
@@ -121,22 +122,22 @@ void Hero::mouse(const df::EventMouse *p_mouse_event) {
 void Hero::kbd(const df::EventKeyboard *p_keyboard_event) {
 
   switch(p_keyboard_event->getKey()) {
-  case df::Keyboard::W:			// up
+  case df::Keyboard::W:       // up
     if (p_keyboard_event->getKeyboardAction() == df::KEY_DOWN)
       move(-1);
     break;
-  case df::Keyboard::S:			// down
+  case df::Keyboard::S:       // down
     if (p_keyboard_event->getKeyboardAction() == df::KEY_DOWN)
       move(+1);
     break;
-  case df::Keyboard::SPACE:		// nuke!
+  case df::Keyboard::SPACE:   // nuke!
     if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
       nuke();
     break;
-  case df::Keyboard::Q:			// quit
-    if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) {
-      df::WorldManager &world_manager = df::WorldManager::getInstance();
-      world_manager.markForDelete(this);
+ case df::Keyboard::Q:        // quit
+   if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) {
+     df::WorldManager &world_manager = df::WorldManager::getInstance();
+     world_manager.markForDelete(this);
     }
     break;
   };
@@ -213,5 +214,3 @@ void Hero::nuke() {
   df::Sound *p_sound = df::ResourceManager::getInstance().getSound("nuke");
   p_sound->play();
 }
-
-
