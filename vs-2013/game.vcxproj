@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8048B0F8-69CF-4A46-BFC8-DAB007C1AA05}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>saucershootnaiad</RootNamespace>
+    <RootNamespace>saucershoot</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

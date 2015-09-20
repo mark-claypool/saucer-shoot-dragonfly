@@ -33,6 +33,9 @@
     <ClInclude Include="..\Hero.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Points.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\Reticle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
