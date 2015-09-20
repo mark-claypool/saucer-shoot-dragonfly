@@ -16,7 +16,7 @@ CC= g++
 # Uncomment below for Mac
 #LINK= -I/usr/local/Cellar/sfml/2.3_1/include -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio 
 # Uncomment below for Linux
-LINK= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
+#LINK= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
 INCLUDE= -I../dragonfly/ # path to dragonfly includes
 ENGINE= ../dragonfly/libdragonfly.a # location of dragonfly engine
 GAMESRC= \
