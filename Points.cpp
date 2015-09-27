@@ -33,7 +33,7 @@ int Points::eventHandler(const df::Event *p_e) {
 
   // If step, increment score every second (30 steps).
   if (p_e->getType() == df::STEP_EVENT) {
-    if (static_cast <const df::EventStep *> (p_e) -> getStepCount() % 30 == 0)
+    if (dynamic_cast <const df::EventStep *> (p_e) -> getStepCount() % 30 == 0)
       setValue(getValue() + 1);
     return 1;
   }

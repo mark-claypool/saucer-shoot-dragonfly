@@ -67,7 +67,7 @@ int Saucer::eventHandler(const df::Event *p_e) {
   }
 
   if (p_e->getType() == df::COLLISION_EVENT) {
-    const df::EventCollision *p_collision_event = static_cast <df::EventCollision const *> (p_e);
+    const df::EventCollision *p_collision_event = dynamic_cast <df::EventCollision const *> (p_e);
     hit(p_collision_event);
     return 1;
   }

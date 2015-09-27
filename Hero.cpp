@@ -89,13 +89,13 @@ Hero::~Hero() {
 int Hero::eventHandler(const df::Event *p_e) {
 
   if (p_e->getType() == df::KEYBOARD_EVENT) {
-    const df::EventKeyboard *p_keyboard_event = static_cast <const df::EventKeyboard *> (p_e);
+    const df::EventKeyboard *p_keyboard_event = dynamic_cast <const df::EventKeyboard *> (p_e);
     kbd(p_keyboard_event);
     return 1;
   }
 
   if (p_e->getType() == df::MOUSE_EVENT) {
-    const df::EventMouse *p_mouse_event = static_cast <const df::EventMouse *> (p_e);
+    const df::EventMouse *p_mouse_event = dynamic_cast <const df::EventMouse *> (p_e);
     mouse(p_mouse_event);
     return 1;
   }
