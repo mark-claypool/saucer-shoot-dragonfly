@@ -23,9 +23,9 @@ Reticle::Reticle() {
 
   // Start reticle in center of window.
   df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::Position pos(world_manager.getBoundary().getHorizontal()/2,
+  df::Vector p(world_manager.getBoundary().getHorizontal()/2,
 		   world_manager.getBoundary().getVertical()/2);
-  setPosition(pos);
+  setPosition(p);
 }
 
 // Handle event.

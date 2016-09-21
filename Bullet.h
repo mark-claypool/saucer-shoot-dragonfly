@@ -12,6 +12,6 @@ class Bullet : public df::Object {
   void hit(const df::EventCollision *p_collision_event);
 
  public:
-  Bullet(df::Position hero_pos);
+  Bullet(df::Vector hero_pos);
   int eventHandler(const df::Event *p_e);
 };

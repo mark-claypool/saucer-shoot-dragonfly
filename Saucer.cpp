@@ -40,7 +40,7 @@ Saucer::Saucer() {
   setType("Saucer");
 
   // Set speed in horizontal direction.
-  setXVelocity(-0.25); // 1 space left every 4 frames
+  setVelocity(df::Vector(-0.25,0)); // 1 space left every 4 frames
 
   // Move Saucer to start location.
   moveToStart();
@@ -142,7 +142,7 @@ void Saucer::hit(const df::EventCollision *p_collision_event) {
 // Move Saucer to starting location on right side of window.
 void Saucer::moveToStart() {
   df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::Position temp_pos;
+  df::Vector temp_pos;
 
   // Get world boundaries.
   int world_horiz = world_manager.getBoundary().getHorizontal();

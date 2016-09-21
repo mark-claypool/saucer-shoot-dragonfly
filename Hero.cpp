@@ -49,8 +49,8 @@ Hero::Hero() {
 
   // Set starting location.
   df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::Position pos(7, world_manager.getBoundary().getVertical()/2);
-  setPosition(pos);
+  df::Vector p(7, world_manager.getBoundary().getVertical()/2);
+  setPosition(p);
 
   // Create reticle for firing bullets.
   p_reticle = new Reticle();
@@ -72,7 +72,7 @@ Hero::~Hero() {
   // Make big explosion.
   for (int i=-8; i<=8; i+=5) {
     for (int j=-5; j<=5; j+=3) {
-      df::Position temp_pos = this->getPosition();
+      df::Vector temp_pos = this->getPosition();
       temp_pos.setX(this->getPosition().getX() + i);
       temp_pos.setY(this->getPosition().getY() + j);
       Explosion *p_explosion = new Explosion;
@@ -154,7 +154,7 @@ void Hero::move(int dy) {
   move_countdown = move_slowdown;
 
   // If stays on window, allow move.
-  df::Position new_pos(getPosition().getX(), getPosition().getY() + dy);
+  df::Vector new_pos(getPosition().getX(), getPosition().getY() + dy);
   df::WorldManager &world_manager = df::WorldManager::getInstance();
   if ((new_pos.getY() > 3) && 
       (new_pos.getY() < world_manager.getBoundary().getVertical()-1))
@@ -162,7 +162,7 @@ void Hero::move(int dy) {
 }
 
 // Fire bullet towards target.
-void Hero::fire(df::Position target) {
+void Hero::fire(df::Vector target) {
 
   // See if time to fire.
   if (fire_countdown > 0)
@@ -171,8 +171,9 @@ void Hero::fire(df::Position target) {
 
   // Fire Bullet towards target.
   Bullet *p = new Bullet(getPosition());
-  p->setYVelocity((float) (target.getY() - getPosition().getY()) /
-		  (float) (target.getX() - getPosition().getX()));
+  p->setVelocity(df::Vector(p->getVelocity().getX(),
+			    (target.getY() - getPosition().getY()) /
+			    (target.getX() - getPosition().getX())));
 
   // Play "fire" sound.
   df::Sound *p_sound = df::ResourceManager::getInstance().getSound("fire");

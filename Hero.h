@@ -19,7 +19,7 @@ class Hero : public df::Object {
   void mouse(const df::EventMouse *p_mouse_event);
   void kbd(const df::EventKeyboard *p_keyboard_event);
   void move(int dy);
-  void fire(df::Position target);
+  void fire(df::Vector target);
   void step();
   void nuke();
 

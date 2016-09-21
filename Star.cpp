@@ -16,12 +16,12 @@
 Star::Star() {
   setType("Star");
   setSolidness(df::SPECTRAL);
-  setXVelocity((float) (-1.0 / (rand()%10 + 1)));
+  setVelocity(df::Vector((float) -1.0 /(rand()%9 + 2), 0));
   setAltitude(0);	// Make Stars in the background.
   df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::Position pos(rand()%world_manager.getBoundary().getHorizontal(),
-	       rand()%world_manager.getBoundary().getVertical());
-  setPosition(pos);
+  df::Vector p((float) (rand()%(int)world_manager.getBoundary().getHorizontal()),
+	       (float) (rand()%(int)world_manager.getBoundary().getVertical()));
+  setPosition(p);
 }
 
 // Draw star window.
@@ -46,8 +46,7 @@ int Star::eventHandler(const df::Event *p_e) {
 // If Star moved off window, move back to far right.
 void Star::out() {
   df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::Position pos(world_manager.getBoundary().getHorizontal() + rand()%20,
-		   rand() % world_manager.getBoundary().getVertical());
-  setPosition(pos);
-  setXVelocity((float) (-1.0 / (rand()%10 + 1)));
+  df::Vector p((float) (rand()%(int)world_manager.getBoundary().getHorizontal()),
+	       (float) (rand()%(int)world_manager.getBoundary().getVertical()));
+  setPosition(p);
 }

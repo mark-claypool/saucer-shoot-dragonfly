@@ -12,7 +12,7 @@
 #include "Bullet.h"
 #include "Saucer.h"
 
-Bullet::Bullet(df::Position hero_pos) {
+Bullet::Bullet(df::Vector hero_pos) {
 
   // Link to "bullet" sprite.
   df::ResourceManager &resource_manager = df::ResourceManager::getInstance();
@@ -28,11 +28,11 @@ Bullet::Bullet(df::Position hero_pos) {
 
   // Set other object properties.
   setType("Bullet");
-  setXVelocity(1); // Move 1 space right every game loop.
+  setVelocity(df::Vector(1,0)); // Move 1 space right every game loop.
 
   // Set starting location, based on hero's position passed in.
-  df::Position pos(hero_pos.getX()+3, hero_pos.getY());
-  setPosition(pos);
+  df::Vector p(hero_pos.getX()+3, hero_pos.getY());
+  setPosition(p);
 }
 
 // Handle event.
