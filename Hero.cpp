@@ -24,14 +24,11 @@ static void registerInterest(std::string s) {};
 Hero::Hero() {
 
   // Link to "ship" sprite.
-  df::ResourceManager &resource_manager = df::ResourceManager::getInstance();
-  df::LogManager &log_manager = df::LogManager::getInstance();
   df::Sprite *p_temp_sprite;
-  p_temp_sprite = resource_manager.getSprite("ship");
-  if (!p_temp_sprite) {
-    log_manager.writeLog("Hero::Hero(): Warning! Sprite '%s' not found", 
-			 "ship");
-  } else {
+  p_temp_sprite = RM.getSprite("ship");
+  if (!p_temp_sprite)
+    LM.writeLog("Hero::Hero(): Warning! Sprite '%s' not found", "ship");
+  else {
     setSprite(p_temp_sprite);
     setSpriteSlowdown(3);  // 1/3 speed animation.
     setTransparency();	   // Transparent sprite.
@@ -48,8 +45,7 @@ Hero::Hero() {
   setType("Hero");
 
   // Set starting location.
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::Vector p(7, world_manager.getBoundary().getVertical()/2);
+  df::Vector p(7, WM.getBoundary().getVertical()/2);
   setPosition(p);
 
   // Create reticle for firing bullets.
@@ -81,7 +77,7 @@ Hero::~Hero() {
   }
  
   // Mark Reticle for deletion.
-  df::WorldManager::getInstance().markForDelete(p_reticle);
+  WM.markForDelete(p_reticle);
 }
  
 // Handle event.
@@ -134,11 +130,9 @@ void Hero::kbd(const df::EventKeyboard *p_keyboard_event) {
     if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
       nuke();
     break;
- case df::Keyboard::Q:        // quit
-   if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) {
-     df::WorldManager &world_manager = df::WorldManager::getInstance();
-     world_manager.markForDelete(this);
-    }
+  case df::Keyboard::Q:        // quit
+    if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
+      WM.markForDelete(this);
     break;
   };
 
@@ -155,10 +149,9 @@ void Hero::move(int dy) {
 
   // If stays on window, allow move.
   df::Vector new_pos(getPosition().getX(), getPosition().getY() + dy);
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
   if ((new_pos.getY() > 3) && 
-      (new_pos.getY() < world_manager.getBoundary().getVertical()-1))
-    world_manager.moveObject(this, new_pos);
+      (new_pos.getY() < WM.getBoundary().getVertical()-1))
+    WM.moveObject(this, new_pos);
 }
 
 // Fire bullet towards target.
@@ -176,7 +169,7 @@ void Hero::fire(df::Vector target) {
 			    (target.getX() - getPosition().getX())));
 
   // Play "fire" sound.
-  df::Sound *p_sound = df::ResourceManager::getInstance().getSound("fire");
+  df::Sound *p_sound = RM.getSound("fire");
   p_sound->play();
 }
 
@@ -203,15 +196,14 @@ void Hero::nuke() {
   nuke_count--;
 
   // Create "nuke" event and send to interested Objects.
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
   EventNuke nuke;
-  world_manager.onEvent(&nuke);
+  WM.onEvent(&nuke);
  
   // Send "view" event do decrease number of nukes to interested ViewObjects.
   df::EventView ev("Nukes", -1, true);
-  world_manager.onEvent(&ev);
+  WM.onEvent(&ev);
 
   // Play "nuke" sound.
-  df::Sound *p_sound = df::ResourceManager::getInstance().getSound("nuke");
+  df::Sound *p_sound = RM.getSound("nuke");
   p_sound->play();
 }

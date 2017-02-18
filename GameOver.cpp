@@ -21,12 +21,10 @@ GameOver::GameOver() {
   setType("GameOver");
 
   // Link to "message" sprite.
-  df::ResourceManager &resource_manager = df::ResourceManager::getInstance();
-  df::Sprite *p_temp_sprite = resource_manager.getSprite("gameover");
-  if (!p_temp_sprite) {
-    df::LogManager &log_manager = df::LogManager::getInstance();
-    log_manager.writeLog("GameOver::GameOver(): Warning! Sprite 'gameover' not found");
-  } else {
+  df::Sprite *p_temp_sprite = RM.getSprite("gameover");
+  if (!p_temp_sprite)
+    LM.writeLog("GameOver::GameOver(): Warning! Sprite 'gameover' not found");
+  else {
     setSprite(p_temp_sprite);
     setSpriteSlowdown(15);		  
     time_to_live = p_temp_sprite->getFrameCount() * 15;
@@ -39,17 +37,14 @@ GameOver::GameOver() {
   registerInterest(df::STEP_EVENT);
 
   // Play "game over" sound.
-  df::Sound *p_sound = df::ResourceManager::getInstance().getSound("game over");
+  df::Sound *p_sound = RM.getSound("game over");
   p_sound->play();
 }
 
 // When done, game over so shut down.
 GameOver::~GameOver() {
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::GameManager &game_manager = df::GameManager::getInstance();
-
-  world_manager.markForDelete(this);
-  game_manager.setGameOver();
+  WM.markForDelete(this);
+  GM.setGameOver();
 }
 
 // Handle event.
@@ -69,8 +64,7 @@ int GameOver::eventHandler(const df::Event *p_e) {
 void GameOver::step() {
   time_to_live--;
   if (time_to_live <= 0) { 
-    df::WorldManager &world_manager = df::WorldManager::getInstance();
-    world_manager.markForDelete(this);
+    WM.markForDelete(this);
   }
 }
 

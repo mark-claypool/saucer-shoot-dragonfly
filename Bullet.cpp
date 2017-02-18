@@ -15,13 +15,10 @@
 Bullet::Bullet(df::Vector hero_pos) {
 
   // Link to "bullet" sprite.
-  df::ResourceManager &resource_manager = df::ResourceManager::getInstance();
-  df::Sprite *p_temp_sprite = resource_manager.getSprite("bullet");
-  if (!p_temp_sprite) {
-    df::LogManager &log_manager = df::LogManager::getInstance();
-    log_manager.writeLog("Bullet::Bullet(): Warning! Sprite '%s' not found", 
-			 "bullet");
-  } else {
+  df::Sprite *p_temp_sprite = RM.getSprite("bullet");
+  if (!p_temp_sprite) 
+    LM.writeLog("Bullet::Bullet(): Warning! Sprite '%s' not found",  "bullet");
+  else {
     setSprite(p_temp_sprite);
     setSpriteSlowdown(5);		
   }
@@ -56,13 +53,11 @@ int Bullet::eventHandler(const df::Event *p_e) {
 
 // If Bullet moves outside world, mark self for deletion.
 void Bullet::out() {
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
-  world_manager.markForDelete(this);
+  WM.markForDelete(this);
 }
 
 // If Bullet hits Saucer, mark Saucer and Bullet for deletion.
 void Bullet::hit(const df::EventCollision *p_collision_event) {
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
-  world_manager.markForDelete(p_collision_event->getObject1());
-  world_manager.markForDelete(p_collision_event->getObject2());
+  WM.markForDelete(p_collision_event->getObject1());
+  WM.markForDelete(p_collision_event->getObject2());
 }

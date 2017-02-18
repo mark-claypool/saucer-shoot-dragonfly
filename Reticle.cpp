@@ -3,8 +3,8 @@
 //
 
 // Engine includes.
+#include "DisplayManager.h"
 #include "EventMouse.h"
-#include "GraphicsManager.h"
 #include "WorldManager.h"
 
 // Game includes.
@@ -22,9 +22,8 @@ Reticle::Reticle() {
   registerInterest(df::MOUSE_EVENT);
 
   // Start reticle in center of window.
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
-  df::Vector p(world_manager.getBoundary().getHorizontal()/2,
-		   world_manager.getBoundary().getVertical()/2);
+  df::Vector p(WM.getBoundary().getHorizontal()/2,
+	       WM.getBoundary().getVertical()/2);
   setPosition(p);
 }
 
@@ -47,6 +46,5 @@ int Reticle::eventHandler(const df::Event *p_e) {
 
 // Draw reticle on window.
 void Reticle::draw() {
-  df::GraphicsManager &graphics_manager = df::GraphicsManager::getInstance();
-  graphics_manager.drawCh(getPosition(), RETICLE_CHAR, df::RED); 
+  DM.drawCh(getPosition(), RETICLE_CHAR, df::RED); 
 }

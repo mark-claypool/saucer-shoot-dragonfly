@@ -24,12 +24,10 @@ GameStart::GameStart() {
   setType("GameStart");
 
   // Link to "message" sprite.
-  df::ResourceManager &resource_manager = df::ResourceManager::getInstance();
-  df::Sprite *p_temp_sprite = resource_manager.getSprite("gamestart");
-  if (!p_temp_sprite) {
-    df::LogManager &log_manager = df::LogManager::getInstance();
-    log_manager.writeLog("GameStart::GameStart(): Warning! Sprite 'gamestart' not found");
-  } else {
+  df::Sprite *p_temp_sprite = RM.getSprite("gamestart");
+  if (!p_temp_sprite) 
+    LM.writeLog("GameStart::GameStart(): Warning! Sprite 'gamestart' not found");
+  else {
     setSprite(p_temp_sprite);
     setSpriteSlowdown(15);		  
   }
@@ -41,7 +39,7 @@ GameStart::GameStart() {
   registerInterest(df::KEYBOARD_EVENT);
 
   // Play start music.
-  p_music = df::ResourceManager::getInstance().getMusic("start music");
+  p_music = RM.getMusic("start music");
   playMusic();
 }
 
@@ -53,7 +51,6 @@ void GameStart::playMusic() {
 // Handle event.
 // Return 0 if ignored, else 1.
 int GameStart::eventHandler(const df::Event *p_e) {
-  df::GameManager &game_manager = df::GameManager::getInstance();
 
   if (p_e->getType() == df::KEYBOARD_EVENT) {
     df::EventKeyboard *p_keyboard_event = (df::EventKeyboard *) p_e;
@@ -63,7 +60,7 @@ int GameStart::eventHandler(const df::Event *p_e) {
       start();
       break;
     case df::Keyboard::Q:			// quit
-      game_manager.setGameOver();
+      GM.setGameOver();
       break;
     default:
       break;
@@ -96,7 +93,7 @@ void GameStart::start() {
   p_music->pause();
 
   // When game starts, destroy this object.
-  df::WorldManager::getInstance().markForDelete(this);
+  WM.markForDelete(this);
 }
 
 // Override default draw so as not to display "value".

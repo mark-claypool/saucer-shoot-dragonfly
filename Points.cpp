@@ -3,9 +3,9 @@
 //
 
 // Engine includes
+#include "DisplayManager.h"
 #include "Event.h"
 #include "EventStep.h"
-#include "GraphicsManager.h"
 #include "LogManager.h"
 
 // Game includes.

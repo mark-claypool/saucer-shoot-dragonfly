@@ -17,18 +17,16 @@ void loadResources(void);
 void populateWorld(void);
  
 int main(int argc, char *argv[]) {
-  df::LogManager &log_manager = df::LogManager::getInstance();
 
   // Start up game manager.
-  df::GameManager &game_manager = df::GameManager::getInstance();
-  if (game_manager.startUp())  {
-    log_manager.writeLog("Error starting game manager!");
-    game_manager.shutDown();
+  if (GM.startUp())  {
+    LM.writeLog("Error starting game manager!");
+    GM.shutDown();
     return 0;
   }
 
   // Set flush of logfile during development (when done, make false).
-  log_manager.setFlush(true);
+  LM.setFlush(true);
 
   // Load game resources.
   loadResources();
@@ -37,26 +35,25 @@ int main(int argc, char *argv[]) {
   populateWorld();
  
   // Run game (this blocks until game loop is over).
-  game_manager.run();
+  GM.run();
  
   // Shut everything down.
-  game_manager.shutDown();
+  GM.shutDown();
 }
  
 // Load resources (sprites, sound effects, music).
 void loadResources(void) {
-  df::ResourceManager &resource_manager = df::ResourceManager::getInstance();
-  resource_manager.loadSprite("sprites/saucer-spr.txt", "saucer");
-  resource_manager.loadSprite("sprites/ship-spr.txt", "ship");
-  resource_manager.loadSprite("sprites/bullet-spr.txt", "bullet");
-  resource_manager.loadSprite("sprites/explosion-spr.txt", "explosion");
-  resource_manager.loadSprite("sprites/gamestart-spr.txt", "gamestart");
-  resource_manager.loadSprite("sprites/gameover-spr.txt", "gameover");
-  resource_manager.loadSound("sounds/fire.wav", "fire");
-  resource_manager.loadSound("sounds/explode.wav", "explode");
-  resource_manager.loadSound("sounds/nuke.wav", "nuke");
-  resource_manager.loadSound("sounds/game-over.wav", "game over");
-  resource_manager.loadMusic("sounds/start-music.wav", "start music");
+  RM.loadSprite("sprites/saucer-spr.txt", "saucer");
+  RM.loadSprite("sprites/ship-spr.txt", "ship");
+  RM.loadSprite("sprites/bullet-spr.txt", "bullet");
+  RM.loadSprite("sprites/explosion-spr.txt", "explosion");
+  RM.loadSprite("sprites/gamestart-spr.txt", "gamestart");
+  RM.loadSprite("sprites/gameover-spr.txt", "gameover");
+  RM.loadSound("sounds/fire.wav", "fire");
+  RM.loadSound("sounds/explode.wav", "explode");
+  RM.loadSound("sounds/nuke.wav", "nuke");
+  RM.loadSound("sounds/game-over.wav", "game over");
+  RM.loadMusic("sounds/start-music.wav", "start music");
 }
  
 // Populate world with some objects.

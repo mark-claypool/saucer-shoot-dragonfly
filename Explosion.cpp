@@ -19,15 +19,12 @@ Explosion::Explosion() {
   registerInterest(df::STEP_EVENT);
 
   // Link to "explosion" sprite.
-  df::ResourceManager &resource_manager = df::ResourceManager::getInstance();
-  df::Sprite *p_temp_sprite = resource_manager.getSprite("explosion");
-  if (!p_temp_sprite) {
-    df::LogManager &log_manager = df::LogManager::getInstance();
-    log_manager.writeLog("Explosion::Explosion(): Warning! Sprite '%s' not found", 
+  df::Sprite *p_temp_sprite = RM.getSprite("explosion");
+  if (!p_temp_sprite)
+    LM.writeLog("Explosion::Explosion(): Warning! Sprite '%s' not found",
 		"explosion");
-    return;
-  }
-  setSprite(p_temp_sprite);
+  else
+    setSprite(p_temp_sprite);
 
   setType("Explosion");
 
@@ -51,8 +48,6 @@ int Explosion::eventHandler(const df::Event *p_e) {
 // Count down until explosion finished.
 void Explosion::step() {
   time_to_live--;
-  if (time_to_live <= 0){
-    df::WorldManager &world_manager = df::WorldManager::getInstance();
-    world_manager.markForDelete(this);
-  }
+  if (time_to_live <= 0)
+    WM.markForDelete(this);
 }
