@@ -31,7 +31,6 @@ Hero::Hero() {
   else {
     setSprite(p_temp_sprite);
     setSpriteSlowdown(3);  // 1/3 speed animation.
-    setTransparency();	   // Transparent sprite.
   }
 
   // Player controls hero, so register for input events.

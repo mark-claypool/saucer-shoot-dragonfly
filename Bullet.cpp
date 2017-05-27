@@ -58,6 +58,9 @@ void Bullet::out() {
 
 // If Bullet hits Saucer, mark Saucer and Bullet for deletion.
 void Bullet::hit(const df::EventCollision *p_collision_event) {
-  WM.markForDelete(p_collision_event->getObject1());
-  WM.markForDelete(p_collision_event->getObject2());
+  if ((p_collision_event -> getObject1() -> getType() == "Saucer") || 
+      (p_collision_event -> getObject2() -> getType() == "Saucer")) {
+    WM.markForDelete(p_collision_event->getObject1());
+    WM.markForDelete(p_collision_event->getObject2());
+  }
 }

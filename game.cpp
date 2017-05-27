@@ -5,7 +5,6 @@
 // Engine includes.
 #include "GameManager.h"
 #include "LogManager.h"
-#include "Pause.h"
 #include "ResourceManager.h"
  
 // Game includes.
