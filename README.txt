@@ -1,8 +1,8 @@
 SAUCER SHOOT
 Mark Claypool (WPI)
 
-Version of Saucer Shoot game from Dragonfly tutorial that works with a
-basic Dragonfly (no optional elements implemented).
+Version of Saucer Shoot game from Dragonfly tutorial that works with
+the Dragonfly core (no optional elements implemented).
 
 Tutorial available online:
 
@@ -23,6 +23,11 @@ See http://dragonfly.wpi.edu/ for details.
 
 1) Build, as appropriate for your platform (e.g., "make" on Linux,
 F7 on Windows from Visual Studio).
+
+Note! If using the full version of Dragonfly (with event filtering),
+uncomment the Makefile line:
+
+ CFLAGS= -DREGISTER
 
 2) Run the game, as appropriate for your platform (e.g., "./game" on
 Linux, F5 on Windows from Visual Studio)
