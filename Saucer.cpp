@@ -138,11 +138,11 @@ void Saucer::moveToStart() {
   df::Vector temp_pos;
 
   // Get world boundaries.
-  int world_horiz = WM.getBoundary().getHorizontal();
-  int world_vert = WM.getBoundary().getVertical();
+  int world_horiz = (int) WM.getBoundary().getHorizontal();
+  int world_vert = (int) WM.getBoundary().getVertical();
 
   // x is off right side of window.
-  temp_pos.setX(world_horiz + rand()%world_horiz + 3);
+  temp_pos.setX((float) (world_horiz + rand()%world_horiz + 3));
 
   // y is in vertical range.
   temp_pos.setY(rand()%(world_vert-4) + 4);
