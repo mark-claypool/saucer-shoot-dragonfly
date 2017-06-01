@@ -43,7 +43,7 @@ int Star::eventHandler(const df::Event *p_e) {
 
 // If Star moved off window, move back to far right.
 void Star::out() {
-  df::Vector p((float) (rand()%(int)WM.getBoundary().getHorizontal()),
-	       (float) (rand()%(int)WM.getBoundary().getVertical()));
+  df::Vector p((float) (WM.getBoundary().getHorizontal() + rand()%20),
+	       (float) (rand() % (int)WM.getBoundary().getVertical()));
   setPosition(p);
 }
