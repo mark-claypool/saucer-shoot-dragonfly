@@ -18,6 +18,9 @@ window_vertical_pixels:768,
 window_horizontal_chars:80,
 window_vertical_chars:24,
 
+# Font scale multiplier (2.0 is "normal", 1.0 for "square").
+font_scale:2.0,
+
 # Window background color. 
 # (Choices: black, red, green, yellow, blue, magenta, cyan, white).
 window_background_color:black,
