@@ -24,11 +24,6 @@ See http://dragonfly.wpi.edu/ for details.
 1) Build, as appropriate for your platform (e.g., "make" on Linux,
 F7 on Windows from Visual Studio).
 
-Note! If using the full version of Dragonfly (with event filtering),
-uncomment the Makefile line:
-
- CFLAGS= -DREGISTER
-
 2) Run the game, as appropriate for your platform (e.g., "./game" on
 Linux, F5 on Windows from Visual Studio)
 
@@ -40,6 +35,7 @@ sounds/ - contains the sound files used in Saucer shoot
 sprites/ - contains the sprite files used in Saucer shoot
 saucer-shoot/ - contains the Microsoft Visual Studio solution files
  if developing on a Windows platform
+vs-2017/ - contains the VS 2017 project files
 
 --------------------------------------------------------------------
 
