@@ -24,18 +24,11 @@ static void registerInterest(std::string s) {};
 Hero::Hero() {
 
   // Link to "ship" sprite.
-  df::Sprite *p_temp_sprite;
-  p_temp_sprite = RM.getSprite("ship");
-  if (!p_temp_sprite)
-    LM.writeLog("Hero::Hero(): Warning! Sprite '%s' not found", "ship");
-  else {
-    setSprite(p_temp_sprite);
-    setSpriteSlowdown(3);  // 1/3 speed animation.
-  }
+  setSprite("ship");
 
   // Player controls hero, so register for input events.
   registerInterest(df::KEYBOARD_EVENT);
-  registerInterest(df::MOUSE_EVENT);
+  registerInterest(df::MSE_EVENT);
 
   // Need to update rate control each step.
   registerInterest(df::STEP_EVENT);
@@ -89,7 +82,7 @@ int Hero::eventHandler(const df::Event *p_e) {
     return 1;
   }
 
-  if (p_e->getType() == df::MOUSE_EVENT) {
+  if (p_e->getType() == df::MSE_EVENT) {
     const df::EventMouse *p_mouse_event = dynamic_cast <const df::EventMouse *> (p_e);
     mouse(p_mouse_event);
     return 1;

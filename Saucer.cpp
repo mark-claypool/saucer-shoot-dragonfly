@@ -25,13 +25,7 @@ static void registerInterest(std::string s) {};
 Saucer::Saucer() {
 
   // Setup "saucer" sprite.
-  df::Sprite *p_temp_sprite = RM.getSprite("saucer");
-  if (!p_temp_sprite) 
-    LM.writeLog("Saucer::Saucer(): Warning! Sprite '%s' not found", "saucer");
-  else {
-    setSprite(p_temp_sprite);
-    setSpriteSlowdown(4);		
-  }
+  setSprite("saucer");
 
   // Set object type.
   setType("Saucer");

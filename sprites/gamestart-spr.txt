@@ -1,7 +1,11 @@
+<HEADER>
 frames 2
 width 70
 height 9
 color yellow
+slowdown 15
+</HEADER>
+<BODY>
      _____                               _____ __                __   
     / ___/____ ___  __________  _____   / ___// /_  ____  ____  / /_  
     \__ \/ __ `/ / / / ___/ _ \/ ___/   \__ \/ __ \/ __ \/ __ \/ __/  
@@ -22,4 +26,7 @@ end
                                                                       
                                                                       
 end
-eof
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

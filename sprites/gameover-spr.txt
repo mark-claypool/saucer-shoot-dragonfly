@@ -1,7 +1,11 @@
+<HEADER>
 frames 12
 width 54
 height 5
 color cyan
+slowdown 15
+</HEADER>
+<BODY>
    ______                                             
   / ____/                                             
  / / __                                               
@@ -74,4 +78,7 @@ end
 / /_/ / /_/ / / / / / /  __/  / /_/ /| |/ /  __/ /    
 \____/\__,_/_/ /_/ /_/\___/   \____/ |___/\___/_/     
 end
-eof
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

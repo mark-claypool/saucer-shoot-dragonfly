@@ -17,9 +17,20 @@ CC= g++
 ### Uncomment only 1 of the below! ###
 
 # 1) Uncomment below for Linux (64-bit)
-LINKLIB= -ldragonfly-linux64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
-LINKDIR= -L../dragonfly/lib/ # path to dragonfly library
-INCDIR= -I../dragonfly/include/ # path to dragonfly includes
+#LINKLIB= -ldragonfly-linux64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
+#LINKDIR= -L../dragonfly/lib/ # path to dragonfly library
+#INCDIR= -I../dragonfly/include/ # path to dragonfly includes
+# Uncomment and update below if using local SFML installation.
+
+LINKLIB= -ldragonfly -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
+LINKDIR= -L../../dragonfly/ # path to dragonfly library
+INCDIR= -I../../dragonfly/ # path to dragonfly includes
+
+
+LINKDIR:= $(LINKDIR) -L/home/claypool/src/SFML-2.5.0/lib 
+INCDIR:= $(INCDIR) -I/home/claypool/src/SFML-2.5.0/include
+
+
 
 # 2) Uncomment below for Mac (64-bit)
 #LINKLIB= -ldragonfly-mac64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio 

@@ -19,7 +19,7 @@ Reticle::Reticle() {
   setAltitude(df::MAX_ALTITUDE); // Make Reticle in the foreground.
 
   // Reticle moves with mouse, so register.
-  registerInterest(df::MOUSE_EVENT);
+  registerInterest(df::MSE_EVENT);
 
   // Start reticle in center of window.
   df::Vector p(WM.getBoundary().getHorizontal()/2,
@@ -31,7 +31,7 @@ Reticle::Reticle() {
 // Return 0 if ignored, else 1.
 int Reticle::eventHandler(const df::Event *p_e) {
 
-  if (p_e->getType() == df::MOUSE_EVENT) {
+  if (p_e->getType() == df::MSE_EVENT) {
     const df::EventMouse *p_mouse_event = dynamic_cast <const df::EventMouse *> (p_e);
     if (p_mouse_event->getMouseAction() == df::MOVED) {
       // Change location to new mouse position.

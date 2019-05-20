@@ -15,13 +15,7 @@
 Bullet::Bullet(df::Vector hero_pos) {
 
   // Link to "bullet" sprite.
-  df::Sprite *p_temp_sprite = RM.getSprite("bullet");
-  if (!p_temp_sprite) 
-    LM.writeLog("Bullet::Bullet(): Warning! Sprite '%s' not found",  "bullet");
-  else {
-    setSprite(p_temp_sprite);
-    setSpriteSlowdown(5);		
-  }
+  setSprite("bullet");
 
   // Set other object properties.
   setType("Bullet");

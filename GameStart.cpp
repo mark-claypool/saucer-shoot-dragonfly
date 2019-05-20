@@ -24,13 +24,7 @@ GameStart::GameStart() {
   setType("GameStart");
 
   // Link to "message" sprite.
-  df::Sprite *p_temp_sprite = RM.getSprite("gamestart");
-  if (!p_temp_sprite) 
-    LM.writeLog("GameStart::GameStart(): Warning! Sprite 'gamestart' not found");
-  else {
-    setSprite(p_temp_sprite);
-    setSpriteSlowdown(15);		  
-  }
+  setSprite("gamestart");
 
   // Put in center of screen.
   setLocation(df::CENTER_CENTER);
