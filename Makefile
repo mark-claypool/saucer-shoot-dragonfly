@@ -21,8 +21,8 @@ LINKLIB= -ldragonfly-linux64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-
 LINKDIR= -L../dragonfly/lib/ # path to dragonfly library
 INCDIR= -I../dragonfly/include/ # path to dragonfly includes
 # Uncomment and update below if using local SFML installation.
-LINKDIR:= $(LINKDIR) -L/home/claypool/src/SFML-2.5.0/lib 
-INCDIR:= $(INCDIR) -I/home/claypool/src/SFML-2.5.0/include
+#LINKDIR:= $(LINKDIR) -L/home/claypool/src/SFML-2.5.0/lib 
+#INCDIR:= $(INCDIR) -I/home/claypool/src/SFML-2.5.0/include
 
 # 2) Uncomment below for Mac (64-bit)
 #LINKLIB= -ldragonfly-mac64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio 

@@ -24,7 +24,7 @@ Star::Star() {
 }
 
 // Draw star window.
-void Star::draw() {
+int Star::draw() {
   DM.drawCh(getPosition(), STAR_CHAR, df::WHITE); 
 }
 

@@ -13,6 +13,6 @@ class Star : public df::Object {
 
  public:
   Star();
-  void draw(void);
+  int draw(void);
   int eventHandler(const df::Event *p_e);
 };

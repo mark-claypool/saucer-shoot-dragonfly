@@ -14,6 +14,6 @@ class GameStart : public df::ViewObject {
  public:
   GameStart();
   int eventHandler(const df::Event *p_e);
-  void draw();
+  int draw();
   void playMusic();
 };

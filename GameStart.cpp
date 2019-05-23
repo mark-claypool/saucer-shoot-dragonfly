@@ -91,6 +91,6 @@ void GameStart::start() {
 }
 
 // Override default draw so as not to display "value".
-void GameStart::draw() {
+int GameStart::draw() {
   df::Object::draw();
 }
