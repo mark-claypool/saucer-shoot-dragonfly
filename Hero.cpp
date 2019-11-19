@@ -55,7 +55,7 @@ Hero::Hero() {
 Hero::~Hero() {
 
   // Create GameOver object.
-  GameOver *p_go = new GameOver;
+  new GameOver;
   
   // Make big explosion.
   for (int i=-8; i<=8; i+=5) {
@@ -125,6 +125,8 @@ void Hero::kbd(const df::EventKeyboard *p_keyboard_event) {
   case df::Keyboard::Q:        // quit
     if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
       WM.markForDelete(this);
+    break;
+  default:
     break;
   };
 

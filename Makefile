@@ -1,33 +1,48 @@
 #
 # Makefile for saucer shoot game using Dragonfly
 #
-# Copyright Mark Claypool and WPI, 2016
+# Mark Claypool. Dragonfly - Program a Game Engine from Scratch,
+# Interactive Media and Game Development, Worcester Polytechnic
+# Institute, 2014. Online at: http://dragonfly.wpi.edu/book/
 #
+# Note!  This uses the core engine (no optional
+# elements implemented) as specified in the
+# book, version 6.
+#
+# Copyright Mark Claypool and WPI, 2016-2019
+#
+# 'make' to build executable
 # 'make depend' to generate new dependency list
 # 'make clean' to remove all constructed files
-# 'make' to build executable
 #
 # Variables of interest:
 #   GAMESRC is the source code files for the game
 #   GAME is the game main() source
+#   EXECUTABLE is the name of the runnable game
 #
 
+# Compiler.
 CC= g++ 
+
+# Libraries and includes.
+LINKDIR= -L../dragonfly/lib # path to dragonfly library
+INCDIR= -I../dragonfly/include # path to dragonfly includes
+
+## Uncomment and update below if using local SFML installation.
+LINKDIR:= $(LINKDIR) -L$(HOME)/src/SFML/lib 
+INCDIR:= $(INCDIR) -I$(HOME)/src/SFML/include
 
 ### Uncomment only 1 of the below! ###
 
-# 1) Uncomment below for Linux (64-bit)
+# 1) Uncomment below for Linux (64-bit).
+CFLAGS=
 LINKLIB= -ldragonfly-linux64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
-LINKDIR= -L../dragonfly/lib/ # path to dragonfly library
-INCDIR= -I../dragonfly/include/ # path to dragonfly includes
-# Uncomment and update below if using local SFML installation.
-#LINKDIR:= $(LINKDIR) -L/home/claypool/src/SFML-2.5.0/lib 
-#INCDIR:= $(INCDIR) -I/home/claypool/src/SFML-2.5.0/include
 
-# 2) Uncomment below for Mac (64-bit)
+# 2) Uncomment below for Mac (64-bit).
+# Note: if homebrew install sfml, may be in:
+#   /usr/local/Cellar/sfml
+#CFLAGS=
 #LINKLIB= -ldragonfly-mac64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio 
-#LINKDIR= -L/usr/local/Cellar/sfml/2.4.0/lib/ -L../dragonfly/lib/ 
-#INCDIR= -I/usr/local/Cellar/sfml/2.4.0/include/ -I../dragonfly/include/
 
 ######
 
@@ -49,17 +64,12 @@ OBJECTS= $(GAMESRC:.cpp=.o)
 
 all: $(EXECUTABLE) Makefile
 
-$(EXECUTABLE): $(ENGINE) $(OBJECTS) $(GAME) $(GAMESRC) 
-	$(CC) $(GAME) $(OBJECTS) -o $@ $(INCDIR) $(LINKDIR) $(LINKLIB) 
+$(EXECUTABLE): $(OBJECTS) $(GAME) $(GAMESRC) 
+	$(CC) $(CFLAGS) $(GAME) $(OBJECTS) -o $@ $(INCDIR) $(LINKDIR) $(LINKLIB) 
 
 .cpp.o: 
-	$(CC) -c $(INCDIR) $< -o $@
+	$(CC) $(CFLAGS) -c $(INCDIR) $< -o $@
 
 clean:
 	rm -rf $(OBJECTS) $(EXECUTABLE) core dragonfly.log Makefile.bak *~
-
-depend: 
-	makedepend *.cpp 2> /dev/null
-
-# DO NOT DELETE
 

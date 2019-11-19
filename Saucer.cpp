@@ -142,10 +142,10 @@ void Saucer::moveToStart() {
   temp_pos.setY(rand()%(world_vert-4) + 4.0f);
 
   // If collision, move right slightly until empty space.
-  df::ObjectList collision_list = WM.isCollision(this, temp_pos);
+  df::ObjectList collision_list = WM.getCollisions(this, temp_pos);
   while (!collision_list.isEmpty()) {
     temp_pos.setX(temp_pos.getX()+1);
-    collision_list = WM.isCollision(this, temp_pos);
+    collision_list = WM.getCollisions(this, temp_pos);
   }
 
   WM.moveObject(this, temp_pos);
