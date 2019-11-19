@@ -1,7 +1,11 @@
+<HEADER>
 frames 5
 width 6
 height 2
 color green
+slowdown 4
+</HEADER>
+<BODY>
  ____ 
 /____\
 end
@@ -17,4 +21,7 @@ end
  ____ 
 /o___\
 end
-eof
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

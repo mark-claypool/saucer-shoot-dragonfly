@@ -1,7 +1,11 @@
+<HEADER>
 frames 2
 width 4
 height 3
 color blue
+slowdown 3
+</HEADER>
+<BODY>
 \   
 ~==-
 /   
@@ -10,4 +14,7 @@ end
  ==-
 /   
 end
-eof
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

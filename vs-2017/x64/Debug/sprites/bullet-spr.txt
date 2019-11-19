@@ -1,9 +1,16 @@
+<HEADER>
 frames 2
 width 2
 height 1
 color blue
+slowdown 5
+</HEADER>
+<BODY>
 >-
 end
 >:
 end
-eof
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

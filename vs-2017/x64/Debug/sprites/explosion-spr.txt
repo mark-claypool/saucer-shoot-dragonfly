@@ -1,7 +1,10 @@
+<HEADER>
 frames 8
 width 5
 height 3
 color red
+</HEADER>
+<BODY>
      
   *  
      
@@ -34,4 +37,7 @@ end
 .    
      
 end
-eof
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>
