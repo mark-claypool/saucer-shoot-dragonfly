@@ -5,9 +5,8 @@
 # Interactive Media and Game Development, Worcester Polytechnic
 # Institute, 2014. Online at: http://dragonfly.wpi.edu/book/
 #
-# Note!  This uses the core engine (no optional
-# elements implemented) as specified in the
-# book, version 6.
+# Note!  This uses the core engine (no optional elements implemented)
+# as specified in the book, version 6.
 #
 # Copyright Mark Claypool and WPI, 2016-2019
 #
@@ -22,7 +21,7 @@
 #
 
 # Compiler.
-CC= g++ 
+CC= g++
 
 # Libraries and includes.
 LINKDIR= -L../dragonfly/lib # path to dragonfly library
@@ -61,6 +60,7 @@ GAMESRC= \
 GAME= game.cpp
 EXECUTABLE= game
 OBJECTS= $(GAMESRC:.cpp=.o)
+CFLAGS:= $(CFLAGS) -DSTL
 
 all: $(EXECUTABLE) Makefile
 

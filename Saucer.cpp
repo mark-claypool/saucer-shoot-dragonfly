@@ -142,11 +142,19 @@ void Saucer::moveToStart() {
   temp_pos.setY(rand()%(world_vert-4) + 4.0f);
 
   // If collision, move right slightly until empty space.
+#ifdef STL
+  std::vector<Object *> collision_list = WM.getCollisions(this, temp_pos);
+  while (!collision_list.empty()) {
+    temp_pos.setX(temp_pos.getX()+1);
+    collision_list = WM.getCollisions(this, temp_pos);
+  }
+#else
   df::ObjectList collision_list = WM.getCollisions(this, temp_pos);
   while (!collision_list.isEmpty()) {
     temp_pos.setX(temp_pos.getX()+1);
     collision_list = WM.getCollisions(this, temp_pos);
   }
+#endif
 
   WM.moveObject(this, temp_pos);
 }
