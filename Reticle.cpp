@@ -10,16 +10,15 @@
 // Game includes.
 #include "Reticle.h"
 
-// Define registerInterest in case engine does not.
-static void registerInterest(std::string s) {};
-
 Reticle::Reticle() {
   setType("Reticle");
   setSolidness(df::SPECTRAL);
   setAltitude(df::MAX_ALTITUDE); // Make Reticle in the foreground.
 
   // Reticle moves with mouse, so register.
+#ifdef DF_REGISTER_INTEREST
   registerInterest(df::MSE_EVENT);
+#endif
 
   // Start reticle in center of window.
   df::Vector p(WM.getBoundary().getHorizontal()/2,

@@ -12,12 +12,12 @@
 // Game includes.
 #include "Explosion.h"
 
-// Define registerInterest in case engine does not.
-static void registerInterest(std::string s) {};
-
 Explosion::Explosion() {
-  registerInterest(df::STEP_EVENT);
 
+#ifdef DF_REGISTER_INTEREST
+  registerInterest(df::STEP_EVENT);
+#endif
+  
   // Link to "explosion" sprite.
   if (setSprite("explosion") == 0)
     time_to_live = getAnimation().getSprite()->getFrameCount();

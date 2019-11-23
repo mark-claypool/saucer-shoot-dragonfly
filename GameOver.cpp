@@ -13,9 +13,6 @@
 #include "GameOver.h"
 #include "GameStart.h"
 
-// Define registerInterest in case engine does not.
-static void registerInterest(std::string s) {};
-
 GameOver::GameOver() {
 
   setType("GameOver");
@@ -30,8 +27,10 @@ GameOver::GameOver() {
   setLocation(df::CENTER_CENTER);
   
   // Register for step event.
+#ifdef DF_REGISTER_INTEREST
   registerInterest(df::STEP_EVENT);
-
+#endif
+  
   // Play "game over" sound.
   df::Sound *p_sound = RM.getSound("game over");
   p_sound->play();

@@ -19,9 +19,6 @@
 #include "Points.h"
 #include "Saucer.h"
 
-// Define registerInterest in case engine does not.
-static void registerInterest(std::string s) {};
-
 Saucer::Saucer() {
 
   // Setup "saucer" sprite.
@@ -37,7 +34,9 @@ Saucer::Saucer() {
   moveToStart();
 
   // Register interest in "nuke" event.
+#ifdef DF_REGISTER_INTEREST
   registerInterest(NUKE_EVENT);
+#endif
 }
 
 Saucer::~Saucer() {

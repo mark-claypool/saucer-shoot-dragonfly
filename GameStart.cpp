@@ -17,9 +17,6 @@
 #include "Points.h"
 #include "Saucer.h"
 
-// Define registerInterest in case engine does not.
-static void registerInterest(std::string s) {};
-
 GameStart::GameStart() {
   setType("GameStart");
 
@@ -30,8 +27,10 @@ GameStart::GameStart() {
   setLocation(df::CENTER_CENTER);
 
   // Register for "keyboard" event.
+#ifdef DF_REGISTER_INTEREST
   registerInterest(df::KEYBOARD_EVENT);
-
+#endif
+  
   // Play start music.
   p_music = RM.getMusic("start music");
   playMusic();

@@ -11,15 +11,14 @@
 // Game includes.
 #include "Points.h"
 
-// Define registerInterest in case engine does not.
-static void registerInterest(std::string s) {};
-
 Points::Points() {
   setLocation(df::TOP_RIGHT);
   setViewString(POINTS_STRING);
   setColor(df::YELLOW);
   // Need to update score each second, so count "step" events.
+#ifdef DF_REGISTER_INTEREST
   registerInterest(df::STEP_EVENT);
+#endif
 }
 
 // Handle event.
