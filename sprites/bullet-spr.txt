@@ -1,16 +1,7 @@
-<HEADER>
-frames 2
-width 2
-height 1
-color blue
-slowdown 5
-</HEADER>
-<BODY>
+2
+2
+1
+5
+blue
 >-
-end
 >:
-end
-</BODY>
-<FOOTER>
-version 1
-</FOOTER>

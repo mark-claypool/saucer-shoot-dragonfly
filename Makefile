@@ -26,16 +26,21 @@ CC= g++
 # Libraries and includes.
 LINKDIR= -L../dragonfly/lib # path to dragonfly library
 INCDIR= -I../dragonfly/include # path to dragonfly includes
+#LINKDIR= -L ../../dragonfly # path to dragonfly library
+#INCDIR= -I ../../dragonfly # path to dragonfly includes
 
 ## Uncomment and update below if using local SFML installation.
-LINKDIR:= $(LINKDIR) -L$(HOME)/src/SFML/lib 
-INCDIR:= $(INCDIR) -I$(HOME)/src/SFML/include
+LOCALSFML= $(HOME)/src/SFML
+LINKDIR:= $(LINKDIR) -L $(LOCALSFML)/lib
+INCDIR:= $(INCDIR) -I $(LOCALSFML)/include
 
 ### Uncomment only 1 of the below! ###
 
 # 1) Uncomment below for Linux (64-bit).
 CFLAGS=
-LINKLIB= -ldragonfly-linux64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
+LINKLIB= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
+LINKLIB= -ldragonfly-linux64 $(LINKLIB) 
+#LINKLIB:= -ldragonfly $(LINKLIB) 
 
 # 2) Uncomment below for Mac (64-bit).
 # Note: if homebrew install sfml, may be in:
@@ -60,7 +65,8 @@ GAMESRC= \
 GAME= game.cpp
 EXECUTABLE= game
 OBJECTS= $(GAMESRC:.cpp=.o)
-CFLAGS:= $(CFLAGS) -DSTL
+# Uncomment if using STL
+#CFLAGS:= $(CFLAGS) -DSTL
 
 all: $(EXECUTABLE) Makefile
 
