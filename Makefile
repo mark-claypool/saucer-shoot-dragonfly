@@ -39,7 +39,7 @@ INCDIR:= $(INCDIR) -I $(LOCALSFML)/include
 # 1) Uncomment below for Linux (64-bit).
 CFLAGS=
 LINKLIB= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
-LINKLIB= -ldragonfly-linux64 $(LINKLIB) 
+LINKLIB:= -ldragonfly-linux64 $(LINKLIB) 
 #LINKLIB:= -ldragonfly $(LINKLIB) 
 
 # 2) Uncomment below for Mac (64-bit).
