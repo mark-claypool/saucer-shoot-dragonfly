@@ -110,11 +110,11 @@ void Hero::kbd(const df::EventKeyboard *p_keyboard_event) {
 
   switch(p_keyboard_event->getKey()) {
   case df::Keyboard::W:       // up
-    if (p_keyboard_event->getKeyboardAction() == df::KEY_DOWN)
+    if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
       move(-1);
     break;
   case df::Keyboard::S:       // down
-    if (p_keyboard_event->getKeyboardAction() == df::KEY_DOWN)
+    if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
       move(+1);
     break;
   case df::Keyboard::SPACE:   // nuke!
