@@ -22,8 +22,8 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E18BD1AE-5D95-45F4-B67B-57F0255381DC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>vs2017</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <RootNamespace>vs2022</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,21 +72,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\sfml-2.4\include;..\..\dragonfly\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\sfml-2.4\lib;..\..\dragonfly\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\SFML-2.6\include;..\..\dragonfly\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML-2.6\lib;..\..\dragonfly\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\sfml-2.5\include;..\..\dragonfly-src\;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\sfml-2.5\lib;..\..\dragonfly-src\vs-2017\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\SFML-2.6\include;..\..\dragonfly\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML-2.6\lib;..\..\dragonfly\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\sfml-2.5\include;..\..\dragonfly-src\;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\sfml-2.5\lib;..\..\dragonfly-src\;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\SFML-2.6\include;..\..\dragonfly\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\SFML-2.6\lib;..\..\dragonfly\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,7 +111,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;dragonfly.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
