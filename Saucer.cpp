@@ -143,13 +143,13 @@ void Saucer::moveToStart() {
   // If collision, move right slightly until empty space.
 #ifdef STL
   std::vector<Object *> collision_list = WM.getCollisions(this, temp_pos);
-  while (!collision_list.empty()) {
+  while (collision_list.getCount() != 0) {
     temp_pos.setX(temp_pos.getX()+1);
     collision_list = WM.getCollisions(this, temp_pos);
   }
 #else
   df::ObjectList collision_list = WM.getCollisions(this, temp_pos);
-  while (!collision_list.isEmpty()) {
+  while (collision_list.getCount() != 0) {
     temp_pos.setX(temp_pos.getX()+1);
     collision_list = WM.getCollisions(this, temp_pos);
   }
