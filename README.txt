@@ -32,10 +32,10 @@ Linux, F5 on Windows from Visual Studio)
 Directories:
 
 sounds/ - contains the sound files used in Saucer shoot
-sprites/ - contains the sprite files used in Saucer shoot
+sprites-simple/ - contains the sprite files used in Saucer shoot
 saucer-shoot/ - contains the Microsoft Visual Studio solution files
  if developing on a Windows platform
-vs-2017/ - contains the VS 2017 project files
+vs-2022/ - contains the VS 2022 project files
 
 --------------------------------------------------------------------
 

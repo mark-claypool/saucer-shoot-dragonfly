@@ -1,6 +1,8 @@
 #
 # Dragonfly configuration file.
 #
+# version 2.4
+#
 
 # 
 # Lines beginning with '#' are comments.
@@ -10,7 +12,7 @@
 # Note - make sure line ends with comma (,)
 # ...
 
-# Window dimensions in pixels.
+# Window dimensions in pixels (0 uses native).
 window_horizontal_pixels:1024,
 window_vertical_pixels:768,
 
@@ -28,20 +30,45 @@ window_background_color:black,
 # Target time for 1 game loop (in milliseconds).
 frame_time:33,
 
-# Window style - "default" or "fullscreen".
-window_style:default,
+# Window style (default is 4).
+# none - borderless (no border or title bar)
+# 1 - title 
+# 2 - title, resize, max
+# 4 - title, close
+# 7 - title, resize, max, close
+window_style:4,
+
+# Window state - "default" or "fullscreen".
+window_state:default,
 
 # Window title.
 window_title:Dragonfly,
 
-# Option to show mouse cursor.
+# Show mouse cursor.
 show_mouse:false,
 
-# Option to run in headless mode (no graphics window or input).
+# Run in headless mode (no graphics window or input).
 headless:false,
 
 # Font file for all ASCII fonts.
 font_file:df-font.ttf,
 
-# Random seed (0 means use current time).
+# Log file for Dragonfly output.
+logfile:dragonfly.log,
+
+# Random seed (0 means use current time, -1 means don't seed).
 random_seed:0,
+
+# Enable networking.
+networking:false,
+
+# Catch signals (SIGINT, SIGSEGV) - Linux/Mac only.
+signals:false,
+
+# Grid customization (cell size).
+grid_width:20,
+grid_height:8,
+
+# Quadtree customization.
+quadtree_depth:10,
+quadtree_threshold:1,

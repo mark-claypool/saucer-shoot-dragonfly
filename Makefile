@@ -6,9 +6,9 @@
 # Institute, 2014. Online at: http://dragonfly.wpi.edu/book/
 #
 # Note!  This uses the core engine (no optional elements implemented)
-# as specified in the book, version 6.
+# as specified in the book, version 10.
 #
-# Copyright Mark Claypool and WPI, 2016-2019
+# Copyright Mark Claypool and WPI, 2016-2025
 #
 # 'make' to build executable
 # 'make depend' to generate new dependency list
@@ -21,32 +21,34 @@
 #
 
 # Compiler.
-CC= g++
+CC= g++ 
 
 # Libraries and includes.
 LINKDIR= -L../dragonfly/lib # path to dragonfly library
 INCDIR= -I../dragonfly/include # path to dragonfly includes
-#LINKDIR= -L ../../dragonfly # path to dragonfly library
-#INCDIR= -I ../../dragonfly # path to dragonfly includes
+SFML_VERSION= 3.0.0
 
-## Uncomment and update below if using local SFML installation.
-LOCALSFML= $(HOME)/src/SFML
+### Uncomment and update below if using local SFML installation.
+LOCALSFML= $(HOME)/src/SFML-$(SFML_VERSION)
 LINKDIR:= $(LINKDIR) -L $(LOCALSFML)/lib
-INCDIR:= $(INCDIR) -I $(LOCALSFML)/include
+INCDIR:= $(INCDIR) -I$(LOCALSFML)/include
 
-### Uncomment only 1 of the below! ###
+CFLAGS= -std=c++17
 
-# 1) Uncomment below for Linux (64-bit).
-CFLAGS=
-LINKLIB= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
-LINKLIB:= -ldragonfly-linux64 $(LINKLIB) 
-#LINKLIB:= -ldragonfly $(LINKLIB) 
+### Uncomment either 1) or 2) below! ###
 
-# 2) Uncomment below for Mac (64-bit).
-# Note: if homebrew install sfml, may be in:
-#   /usr/local/Cellar/sfml
-#CFLAGS=
-#LINKLIB= -ldragonfly-mac64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio 
+## 1) For Linux:
+#ENG= dragonfly-x64-linux
+#CFLAGS:= $(CFLAGS) -Wall
+#LINKLIB= -l$(ENG) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
+
+## 2) For Mac:
+#ENG= dragonfly-arm64-mac
+#Note, below is typical directory for homebrew:
+#LOCALSFML= /opt/homebrewCellar/sfml/$(SFML_VERSION)
+#CFLAGS= -MD # generate depenency files
+#LINKLIB= -l$(ENG) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio 
+#LINKDIR:= $(LINKDIR) -L $(LOCALSFML)/lib
 
 ######
 
@@ -65,8 +67,8 @@ GAMESRC= \
 GAME= game.cpp
 EXECUTABLE= game
 OBJECTS= $(GAMESRC:.cpp=.o)
-# Uncomment if using STL
-#CFLAGS:= $(CFLAGS) -DSTL
+
+.PHONY: all clean
 
 all: $(EXECUTABLE) Makefile
 
@@ -74,8 +76,10 @@ $(EXECUTABLE): $(OBJECTS) $(GAME) $(GAMESRC)
 	$(CC) $(CFLAGS) $(GAME) $(OBJECTS) -o $@ $(INCDIR) $(LINKDIR) $(LINKLIB) 
 
 .cpp.o: 
-	$(CC) $(CFLAGS) -c $(INCDIR) $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCDIR)
 
 clean:
 	rm -rf $(OBJECTS) $(EXECUTABLE) core dragonfly.log Makefile.bak *~
+
+
 
