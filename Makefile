@@ -38,7 +38,7 @@ CFLAGS= -std=c++17
 ### Uncomment either 1) or 2) below! ###
 
 ## 1) For Linux:
-#ENG= dragonfly-x64-linux
+#ENG= dragonfly-x64-linux # option: dragonfly-x64-wsl
 #CFLAGS:= $(CFLAGS) -Wall
 #LINKLIB= -l$(ENG) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
 
